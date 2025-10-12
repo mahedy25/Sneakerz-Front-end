@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import Image from 'next/image'
 import { Address } from '@/lib/types'
+import { motion } from 'framer-motion' // Import Framer Motion
 
 // Extend Address locally to add 'id' for managing multiple addresses in localStorage
 type StoredAddress = Address & { id: string }
@@ -73,7 +74,12 @@ export default function AddressForm() {
   return (
     <main className="min-h-screen px-4 sm:px-6 md:px-10 py-10 md:py-14 max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10">
       {/* Left side image */}
-      <div className="hidden lg:flex flex-1 justify-center items-center">
+      <motion.div
+        className="hidden lg:flex flex-1 justify-center items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <Image
           src="/images/address.png"
           alt="Address illustration"
@@ -81,11 +87,16 @@ export default function AddressForm() {
           height={400}
           className="object-contain"
         />
-      </div>
+      </motion.div>
 
       {/* Right side form */}
-      <div className="w-full lg:flex-1 bg-white p-6 sm:p-8 border border-gray-200 rounded-xl shadow-md">
-        <h1 className="text-2xl sm:text-3xl font-bold text-[#046C4E] mb-6">Add Delivery Address</h1>
+      <motion.div
+        className="w-full lg:flex-1 bg-white p-6 sm:p-8 border border-gray-200 rounded-xl shadow-md"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#DB0030] mb-6">Add Delivery Address</h1>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
@@ -94,7 +105,7 @@ export default function AddressForm() {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded outline-none text-sm border-gray-300 focus:ring-2 focus:ring-[#046C4E]"
+              className="w-full px-4 py-2 border rounded outline-none text-sm border-gray-300 focus:ring-2 focus:ring-[#DB0030]"
               required
             />
           </div>
@@ -122,7 +133,7 @@ export default function AddressForm() {
                 value={form.phone}
                 onChange={handleChange}
                 type="tel"
-                className="w-full px-4 py-2 border rounded outline-none text-sm border-gray-300 focus:ring-2 focus:ring-[#046C4E]"
+                className="w-full px-4 py-2 border rounded outline-none text-sm border-gray-300 focus:ring-2 focus:ring-[#DB0030]"
                 required
               />
             </div>
@@ -135,7 +146,7 @@ export default function AddressForm() {
                 name="city"
                 value={form.city}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded outline-none text-sm border-gray-300 focus:ring-2 focus:ring-[#046C4E]"
+                className="w-full px-4 py-2 border rounded outline-none text-sm border-gray-300 focus:ring-2 focus:ring-[#DB0030]"
                 required
               />
             </div>
@@ -145,7 +156,7 @@ export default function AddressForm() {
                 name="state"
                 value={form.state}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded outline-none text-sm border-gray-300 focus:ring-2 focus:ring-[#046C4E]"
+                className="w-full px-4 py-2 border rounded outline-none text-sm border-gray-300 focus:ring-2 focus:ring-[#DB0030]"
                 required
               />
             </div>
@@ -158,19 +169,19 @@ export default function AddressForm() {
               value={form.fullAddress}
               onChange={handleChange}
               rows={3}
-              className="w-full px-4 py-2 border rounded outline-none text-sm border-gray-300 focus:ring-2 focus:ring-[#046C4E]"
+              className="w-full px-4 py-2 border rounded outline-none text-sm border-gray-300 focus:ring-2 focus:ring-[#DB0030]"
               required
             />
           </div>
 
           <button
             type="submit"
-            className="w-full mt-4 py-3 bg-[#046C4E] text-white font-semibold rounded hover:bg-[#035d3e] transition text-base cursor-pointer"
+            className="w-full mt-4 py-3 bg-[#DB0030] text-white font-semibold rounded hover:bg-[#9b0026] transition text-base cursor-pointer"
           >
             Save & Continue
           </button>
         </form>
-      </div>
+      </motion.div>
     </main>
   )
 }

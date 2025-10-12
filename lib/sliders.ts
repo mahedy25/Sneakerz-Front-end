@@ -9,30 +9,32 @@ export type Slide = {
   cta: string
 }
 
+// slides.ts
 export const slides: Slide[] = [
   {
     id: 1,
-    image: '/HeroCars/mercedes-benz-AMG-GT.jpg',
-    title: 'Rugged and Ready',
-    description: 'Experience the ruggedness and readiness of Mercedes-Benz AMG GT.',
-    link: '/categories/mercedes',
-    cta: 'See Mercedes',
+    image: '/HeroImages/Adidas Yeezy Boost 350 V2_2.jpg',
+    title: 'Adidas Yeezy Boost 350 V2',
+    description: 'Step up your sneaker game with the iconic Adidas Yeezy Boost 350 V2.',
+    link: '/categories/adidas',
+    cta: 'Explore Adidas',
   },
   {
     id: 2,
-    image: '/HeroCars/bmw-M3-GTS.jpg',
-    title: 'Luxury Meets Performance',
-    description: 'Experience the epitome of luxury and performance with BMW M3 GTS.',
-    link: '/categories/bmw',
-    cta: 'View BMW',
+    image: '/HeroImages/Nike Air Jordan4.jpg',
+    title: 'Nike Air Jordan 4',
+    description: 'Experience style and performance with Nike Air Jordan 4.',
+    link: '/categories/nike',
+    cta: 'Explore Nike',
   },
   {
     id: 3,
-    image: '/HeroCars/audi-A4.jpg',
-    title: 'Drive the Future Today',
-    description: 'Audi A4: Unleash the Future of Driving.',
-    link: '/categories/audi',
-    cta: 'Explore AUDI',
+    image: '/HeroImages/Reebok Zig Kinetica2.jpg',
+    title: 'Reebok Zig Kinetica 2',
+    description: 'Run into the future with comfort and style in Reebok Zig Kinetica 2.',
+    link: '/categories/reebok',
+    cta: 'Explore Reebok',
   },
 ]
+
 

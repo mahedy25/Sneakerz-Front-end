@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { Order } from '@/lib/types'
+import { motion } from 'framer-motion' // Import Framer Motion
 
 export default function MyOrder() {
   const [orders, setOrders] = useState<Order[]>([])
@@ -25,20 +26,29 @@ export default function MyOrder() {
   const cashOrders = orders.filter((o) => o.paymentType === 'COD' || o.paymentType.toLowerCase().includes('cash'))
   const onlineOrders = orders.filter((o) => o.paymentType !== 'COD' && !o.paymentType.toLowerCase().includes('cash'))
 
-  const baseColor = '#046C4E'
+  const baseColor = '#004D98'  // Using Blue (#004D98) for the base color
 
   return (
     <div className="p-4 max-w-6xl mx-auto space-y-10">
-      <h1 className="text-3xl sm:text-4xl font-extrabold text-[#046C4E] mb-8 tracking-tight leading-tight">
+      <motion.h1
+        className="text-3xl sm:text-4xl font-extrabold text-[#004D98] mb-8 tracking-tight leading-tight"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         My Orders
-      </h1>
+      </motion.h1>
 
       {/* Cash on Delivery Orders */}
       {cashOrders.length > 0 && (
-        <section>
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <h2
             style={{ color: baseColor }}
-            className="text-xl sm:text-2xl font-semibold mb-6 border-l-4 border-[#046C4E] pl-3 tracking-wide"
+            className="text-xl sm:text-2xl font-semibold mb-6 border-l-4 border-[#004D98] pl-3 tracking-wide"
           >
             Cash on Delivery Orders
           </h2>
@@ -47,15 +57,19 @@ export default function MyOrder() {
               <OrderCard key={order.id} order={order} baseColor={baseColor} />
             ))}
           </div>
-        </section>
+        </motion.section>
       )}
 
       {/* Online Payment Orders */}
       {onlineOrders.length > 0 && (
-        <section>
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <h2
             style={{ color: baseColor }}
-            className="text-xl sm:text-2xl font-semibold mb-6 border-l-4 border-[#046C4E] pl-3 tracking-wide"
+            className="text-xl sm:text-2xl font-semibold mb-6 border-l-4 border-[#004D98] pl-3 tracking-wide"
           >
             Online Payment Orders
           </h2>
@@ -64,11 +78,18 @@ export default function MyOrder() {
               <OrderCard key={order.id} order={order} baseColor={baseColor} />
             ))}
           </div>
-        </section>
+        </motion.section>
       )}
 
       {orders.length === 0 && (
-        <p className="text-gray-600 italic text-lg text-center">You have no orders yet.</p>
+        <motion.p
+          className="text-gray-600 italic text-lg text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          You have no orders yet.
+        </motion.p>
       )}
     </div>
   )
@@ -82,7 +103,12 @@ function OrderCard({
   baseColor: string
 }) {
   return (
-    <article className="bg-white border border-gray-300 rounded-lg shadow-md p-6">
+    <motion.article
+      className="bg-white border border-gray-300 rounded-lg shadow-md p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <header className="mb-4 flex flex-col sm:flex-row sm:justify-between sm:items-center">
         <div>
           <h3
@@ -134,7 +160,7 @@ function OrderCard({
             {/* Product Image */}
             <div className="w-20 h-20 sm:w-24 sm:h-24 relative flex-shrink-0 flex items-center justify-center rounded overflow-hidden border border-gray-300">
               <Image
-                src={item.image[0]}
+                src={item.image[1] || item.image[0]}
                 alt={item.title}
                 width={96}
                 height={96}
@@ -155,6 +181,6 @@ function OrderCard({
           </div>
         ))}
       </section>
-    </article>
+    </motion.article>
   )
 }

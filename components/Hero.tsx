@@ -9,55 +9,87 @@ import 'swiper/css/pagination'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { slides } from '@/lib/sliders' // Adjust path as needed
+import { slides } from '@/lib/sliders'
+import { Button } from './ui/button'
+import { Lobster } from 'next/font/google'
+
+const lobster = Lobster({ weight: '400', subsets: ['latin'] })
 
 export default function Hero() {
   return (
-    <>
-      <section className='mt-5 relative w-full h-[75vh] md:h-[85vh] overflow-hidden'>
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 5000 }}
-          loop
-          className='w-full h-full'
-        >
-          {slides.map((slide) => (
-            <SwiperSlide key={slide.id}>
-              <div className='relative w-full h-full'>
-                <Image
-                  src={slide.image}
-                  alt={slide.title}
-                  fill
-                  className='object-cover brightness-[0.9]'
-                  priority
-                />
+    <section className="relative w-full h-[75vh] sm:h-[80vh] md:h-[85vh] overflow-hidden">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        loop
+        className="w-full h-full"
+      >
+        {slides.map((slide) => (
+          <SwiperSlide key={slide.id}>
+            <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-center">
+              {/* Left Side: Text and Button */}
+              <div className="flex flex-col justify-center items-center sm:items-start px-6 sm:px-12 w-full sm:w-1/2 h-full text-center sm:text-left">
                 <motion.div
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  className='absolute top-1/2 left-6 md:left-16 lg:left-24 transform -translate-y-1/2 z-10 max-w-[90%] md:max-w-xl text-white'
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="text-black"
                 >
-                  <h2 className='text-2xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4 drop-shadow-lg'>
+                  <motion.h1
+                    className={` ${lobster.className} text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-black bg-clip-text drop-shadow-[0_0_25px_rgba(99,102,241,0.3)]`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                  >
                     {slide.title}
-                  </h2>
-                  <p className='text-sm sm:text-base md:text-lg mb-6 max-w-md text-white/90 drop-shadow'>
+                  </motion.h1>
+
+                  <motion.p
+                    className="mt-5 text-lg sm:text-base md:text-lg leading-relaxed"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                  >
                     {slide.description}
-                  </p>
-                  <Link href={slide.link}>
-                    <button className='bg-[#046C4E] hover:bg-[#6F42C1] text-white font-semibold px-6 py-3 rounded-full shadow-lg transition'>
-                      {slide.cta}
-                    </button>
-                  </Link>
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.8 }}
+                  >
+                    <Link href={slide.link}>
+                      <Button className="mt-8">{slide.cta}</Button>
+                    </Link>
+                  </motion.div>
                 </motion.div>
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </section>
 
-      {/* 👇 Hide Swiper arrows on small screens */}
+              {/* Right Side: Image */}
+              <div className="w-full h-[50%] sm:w-1/2 sm:h-full relative">
+                <motion.div
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1, ease: "easeOut" }}
+                  className="w-full h-full"
+                >
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    fill
+                    className="object-contain object-center"
+                    priority
+                  />
+                </motion.div>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      {/* Swiper Custom Styling */}
       <style jsx global>{`
         @media (max-width: 768px) {
           .swiper-button-prev,
@@ -65,7 +97,17 @@ export default function Hero() {
             display: none !important;
           }
         }
+        .swiper-pagination-bullet {
+          background: #DB0030 !important;
+          opacity: 0.5;
+          transition: all 0.3s ease;
+        }
+        .swiper-pagination-bullet-active {
+          background: #DB0030 !important;
+          opacity: 1;
+          transform: scale(1.3);
+        }
       `}</style>
-    </>
+    </section>
   )
 }

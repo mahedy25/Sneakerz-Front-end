@@ -21,19 +21,19 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body
-        className={`${poppins.className} antialiased px-4 md:px-8 lg:px-12 text-[#333333] scroll-smooth`}
+        className={`${poppins.className} antialiased text-[#333333] scroll-smooth`}
       >
         <AppProvider>
-          <Toaster richColors position="top-center" />
+          <Toaster richColors position='top-center' />
           <Header />
-          {children}
+          <div className='px-4 md:px-16 lg:px-32 xl:px-64'>
+            {children}
+          </div>
+
           <Footer />
         </AppProvider>
-         
-
-      
       </body>
     </html>
   )

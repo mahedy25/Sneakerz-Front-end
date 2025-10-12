@@ -6,43 +6,33 @@ export type Category = {
 
 export const categories: Category[] = [
   {
-    text: 'Mercedes',
-    path: 'mercedes',
-    image: '/CarsCategories/mercedes.jpg',
+    text: 'Adidas',
+    path: 'adidas',
+    image: '/ProductCategories/Adidas Superstar1.jpg',
   },
   {
-    text: 'BMW',
-    path: 'bmw',
-    image: '/CarsCategories/bmw.jpg',
+    text: '	Converse',
+    path: 'converse',
+    image: '/ProductCategories/Converse One Star3.jpg',
   },
   {
-    text: 'Audi',
-    path: 'audi',
-    image: '/CarsCategories/audi.jpg',
+    text: 'New Balance',
+    path: 'new-balance',
+    image: '/ProductCategories/New Balance 550_2.jpg',
   },
   {
-    text: 'Genesis',
-    path: 'genesis',
-    image: '/CarsCategories/genesis.png',
+    text: 'Nike',
+    path: 'nike',
+    image: '/ProductCategories/Nike Air Max1.jpg',
   },
   {
-    text: 'Rolls-Royce',
-    path: 'rolls-royce',
-    image: '/CarsCategories/rolls-royce.jpg',
+    text: 'Puma',
+    path: 'puma',
+    image: '/ProductCategories/Puma Suede Classic3.jpg',
   },
   {
-    text: 'Bentley',
-    path: 'bentley',
-    image: '/CarsCategories/bentley.jpg',
-  },
-  {
-    text: 'Porsche',
-    path: 'porsche',
-    image: '/CarsCategories/porsche.jpg',
-  },
-  {
-    text: 'Maserati',
-    path: 'maserati',
-    image: '/CarsCategories/maserati.jpg',
+    text: 'Reebok',
+    path: 'reebok',
+    image: '/ProductCategories/Reebok Zig Kinetica1.jpg',
   },
 ]

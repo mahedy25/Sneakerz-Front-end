@@ -25,9 +25,9 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <main className="mt-20 text-center px-4">
-      <h1 className={`${lobster.className} text-4xl font-bold mb-4`}>{category.text}</h1>
+      <h1 className={`${lobster.className} text-6xl font-bold mb-4`}>{category.text}</h1>
 
-      <p className={`${lobster.className} mt-4 text-xl`}>Showing cars for {category.text}</p>
+      <p className={`${lobster.className} mt-4 text-2xl`}>Showing sneakers of {category.text}</p>
 
       {filteredProducts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10">
@@ -36,7 +36,7 @@ export default async function CategoryPage({ params }: Props) {
           ))}
         </div>
       ) : (
-        <p className="mt-10 text-gray-500 text-lg">No cars available for this brand.</p>
+        <p className="mt-10 text-gray-500 text-lg">No sneakers available for this brand.</p>
       )}
     </main>
   )
