@@ -23,7 +23,7 @@ export default function WhyChooseUs() {
         {/* Banner Image */}
         <div className="w-full lg:w-1/2 relative rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
           <Image
-            src="/images/WhyChooseUs.jpg"
+            src="/images/WhyChooseus.jpg"
             alt="Why Choose Us"
             width={800}
             height={500}
