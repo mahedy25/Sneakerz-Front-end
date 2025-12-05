@@ -36,7 +36,7 @@ export default function About() {
         >
           <Image
             src="/images/aboutus.jpg"
-            alt="Sneaker showcase"
+            alt="about us"
             width={600}
             height={400}
             className="rounded-lg shadow-lg object-cover border border-[#DB0030]/50"
