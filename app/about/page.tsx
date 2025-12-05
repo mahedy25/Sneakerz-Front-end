@@ -35,7 +35,7 @@ export default function About() {
           transition={{ duration: 1 }}
         >
           <Image
-            src="/images/aboutus.jpg"
+            src="/images/about.jpg"
             alt="about us"
             width={600}
             height={400}
